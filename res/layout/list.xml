@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/home_main_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_navbar"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/tvLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_toggle_filter_left_n"
+            android:gravity="center"
+            android:text=" 事件已办  "
+            android:textColor="#A3AAB6"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvMid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tvLeft"
+            android:background="@drawable/btn_toggle_filter_middle_s"
+            android:gravity="center"
+            android:text=" 区领导"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tvMid"
+            android:background="@drawable/btn_toggle_filter_right_n"
+            android:gravity="center"
+            android:text=" 事件待办"
+            android:textColor="#A3AAB6"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/leaderListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dp"
+        android:divider="@drawable/comment_divider_line"
+        android:visibility="gone" >
+    </ListView>
+
+    <ListView
+        android:id="@+id/todoListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dp"
+        android:divider="@drawable/comment_divider_line"
+        android:visibility="gone" >
+    </ListView>
+
+    <ListView
+        android:id="@+id/isEndListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="5dp"
+        android:divider="@drawable/comment_divider_line"
+        android:visibility="gone" >
+    </ListView>
+
+</LinearLayout>

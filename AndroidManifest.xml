@@ -1,0 +1,91 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.simas"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 允许读取电话的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许程序访问有关GSM网络信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 通过基站获取GPS信息 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 通过网络获取GPS信息 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- -改变wifi状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- -改变配置信息 -->
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- 保持唤醒状态 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 允许写入操作 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 访问照相机 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- 自定义application,用于全局变量,全局service,和全局单例方法的存放 -->
+    <application
+        android:name="com.simas.base.ApplicationController"
+        android:allowBackup="true"
+        android:icon="@drawable/logo_gsm_"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar" >
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="298f2ce18ac9de3265e736c90f8dc911" />
+
+        <activity
+            android:name="com.simas.ui.testsuperlistview"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bepo.ui.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bepo.ui.LeaderTodo"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bepo.ui.EventDetailAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.simas.ui.WeatherAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.simas.view.DialogView"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.simas.ui.ListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.simas.ui.QuestionCommentAct"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.simas.test.CameraTest"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.bepo.ui.LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+    </application>
+
+</manifest>
