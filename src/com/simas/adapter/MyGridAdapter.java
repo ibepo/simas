@@ -17,10 +17,10 @@ import com.simas.ui.testsuperlistview;
 public class MyGridAdapter extends BaseAdapter {
 	private Context mContext;
 
-	public String[] img_text = { "事件管理", "基础信息", "信息共享", "巡查轨迹", "统计分析", "民情日志", "居家养老" };
+	public String[] img_text = { "事件管理", "基础信息", "信息共享", "巡查轨迹", "统计分析", "民情日志", "居家养老","考核评估" ,""};
 	public int[] imgs = { R.drawable.home_event, R.drawable.home_jichuxinxi, R.drawable.home_xinxigongxiang,
 			R.drawable.home_xunchaguiji, R.drawable.home_tongjifenxi, R.drawable.home_mingqingrizhi,
-			R.drawable.home_jujiayanglao, };
+			R.drawable.home_jujiayanglao,R.drawable.home_jujiayanglao,R.drawable.home_jujiayanglao };
 
 	public MyGridAdapter(Context mContext) {
 		super();
