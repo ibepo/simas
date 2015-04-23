@@ -2,9 +2,9 @@ package com.simas.ui;
 
 import android.os.Bundle;
 
-import com.finddreams.graygridView.MyGridAdapter;
 import com.finddreams.graygridView.MyGridView;
 import com.simas.R;
+import com.simas.adapter.MyGridAdapter;
 import com.simas.base.BaseAct;
 
 public class MainAct extends BaseAct {
