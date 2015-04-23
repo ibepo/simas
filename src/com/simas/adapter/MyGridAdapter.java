@@ -51,7 +51,6 @@ public class MyGridAdapter extends BaseAdapter {
 		ImageView iv = BaseViewHolder.get(convertView, R.id.iv_item);
 		iv.setBackgroundResource(imgs[position]);
 		tv.setText(img_text[position]);
-		convertView.setTag(position);
 
 		convertView.setOnClickListener(new OnClickListener() {
 			@Override
