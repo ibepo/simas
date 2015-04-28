@@ -86,10 +86,6 @@
             android:name="com.bepo.ui.LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name="com.simas.ui.testsuperlistview"
-            android:screenOrientation="portrait" >
-        </activity>
     </application>
 
 </manifest>
