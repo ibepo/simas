@@ -82,9 +82,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 			name = edUser.getText().toString();
 			psw = etPsw.getText().toString();
 
+			name = "lingdao1";
+			psw = "123456";
+
 			if (MyTextUtils.isEmpty(name) || MyTextUtils.isEmpty(psw)) {
 				ToastUtils.toast(this, "密码或账号不能为空");
-//				getData();
+				// getData();
 			} else {
 				mLoading.setVisibility(View.VISIBLE);
 				tvlogin.setClickable(false);
