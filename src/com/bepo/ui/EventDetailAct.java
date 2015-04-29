@@ -3,10 +3,8 @@ package com.bepo.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
@@ -215,6 +213,12 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 					yiJian = etYijian.getText().toString().trim();
 					String url = "http://" + PathConfig.IP + "/EEventLeaderOpinionApp.app?Method=ExecuteSave&code="
 							+ code + "&leader_opinion=" + yiJian + "&wfID=" + wfID + "&stepID=" + stepID;
+					bt01.setClickable(false);
+					if (popupWindow != null && popupWindow.isShowing()) {
+						popupWindow.dismiss();
+						popupWindow = null;
+					}
+					mLoading.setVisibility(View.VISIBLE);
 					submitData(url);
 
 				}
@@ -231,6 +235,12 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 							+ "/EEventApp.app?Method=ExecuteSaveApproval&workFlowName=EEvent&wfID=" + wfID
 							+ "&stepID=15&actionID=710&opinion=" + yiJian + "&rolecode=" + rolecode + "&gridcode="
 							+ gridcode + "&code=" + LoginActivity.list.get(0).getCode();
+					bt01.setClickable(false);
+					if (popupWindow != null && popupWindow.isShowing()) {
+						popupWindow.dismiss();
+						popupWindow = null;
+					}
+					mLoading.setVisibility(View.VISIBLE);
 					submitData(url.trim());
 
 				}
@@ -251,19 +261,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 		}
 
 		// 设置动画效果
-		popupWindow.setAnimationStyle(R.style.AnimationFade);
-		// 点击其他地方消失
-		popupWindow_view.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (popupWindow != null && popupWindow.isShowing()) {
-					popupWindow.dismiss();
-					popupWindow = null;
-				}
-				return false;
-			}
-
-		});
+		//
 
 	}
 
