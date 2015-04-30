@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +27,17 @@ public class MyTextUtils {
 	private static final int SENCOND_MAX_LENGTH = 18;
 	private static final int NAME_PREV_MAX_LENGTH = 18;
 	private static final int NAME_NEXT_MAX_LENGTH = 0;
+
+	public static String getUTFstr(String str) {
+		try {
+			return URLEncoder.encode(str, "UTF-8");
+
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return str;
+
+	};
 
 	public static android.widget.LinearLayout.LayoutParams getParams(Activity mActivity, double d, int space) {
 		int w = (int) (d * 100);
@@ -186,7 +199,7 @@ public class MyTextUtils {
 		return lastStr;
 	}
 
-	// 服务端以s为单位，android端以ms为单�?
+	// 服务端以s为单位，android端以ms为单�?
 	public static String getDateString(long position) {
 		Date date = new Date(position * 1000);
 		// yyyy/MM/dd
@@ -205,7 +218,7 @@ public class MyTextUtils {
 		return dateStr;
 	}
 
-	// 服务端以s为单位，android端以ms为单�?
+	// 服务端以s为单位，android端以ms为单�?
 	public static String getTimeString(String position) {
 		try {
 			long time = Long.parseLong(position);
@@ -222,7 +235,7 @@ public class MyTextUtils {
 		}
 	}
 
-	// 服务端以s为单位，android端以ms为单�?
+	// 服务端以s为单位，android端以ms为单�?
 	public static String getCurrentTimeString() {
 		try {
 			Date date = new Date();
@@ -238,7 +251,7 @@ public class MyTextUtils {
 		}
 	}
 
-	// 服务端以s为单位，android端以ms为单�?
+	// 服务端以s为单位，android端以ms为单�?
 	public static String getDateStringShare(long position) {
 		Date date = new Date(position * 1000);
 		SimpleDateFormat fmPlayTime = new SimpleDateFormat("yyyyMMdd");
@@ -276,7 +289,7 @@ public class MyTextUtils {
 	}
 
 	/**
-	 * 根据手机的分辨率�?dp 的单�?转成�?px(像素)
+	 * 根据手机的分辨率�?dp 的单�?转成�?px(像素)
 	 */
 	public static int dip2px(Context context, float dpValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
@@ -284,7 +297,7 @@ public class MyTextUtils {
 	}
 
 	/**
-	 * �?6进制转换为字符串
+	 * �?6进制转换为字符串
 	 * 
 	 * @param hexStr
 	 * @return

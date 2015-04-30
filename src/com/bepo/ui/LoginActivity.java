@@ -68,7 +68,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		mLoading = findViewById(R.id.loading);
 
 		loading_txt = (TextView) findViewById(R.id.loading_txt);
-		loading_txt.setText("µÇÂ¼ÖĞ..");
+		loading_txt.setText("ç™»å½•ä¸­..");
 
 		etPsw = (EditText) this.findViewById(R.id.etPsw);
 		edUser = (EditText) this.findViewById(R.id.edUser);
@@ -86,7 +86,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			psw = "123456";
 
 			if (MyTextUtils.isEmpty(name) || MyTextUtils.isEmpty(psw)) {
-				ToastUtils.toast(this, "ÃÜÂë»òÕËºÅ²»ÄÜÎª¿Õ");
+				ToastUtils.toast(this, "å¯†ç æˆ–è´¦å·ä¸èƒ½ä¸ºç©º");
 				// getData();
 			} else {
 				mLoading.setVisibility(View.VISIBLE);
@@ -114,7 +114,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 				String jsondata = response.toString();
 				if (MyTextUtils.isEmpty(jsondata)) {
-					ToastUtils.toast(LoginActivity.this, "ÕËºÅ»òÃÜÂë´íÎó!!");
+					ToastUtils.toast(LoginActivity.this, "è´¦å·æˆ–å¯†ç é”™è¯¯!!");
 					mLoading.setVisibility(View.GONE);
 					tvlogin.setClickable(true);
 

@@ -1,7 +1,11 @@
 package com.bepo.ui;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +28,7 @@ import com.simas.base.ApplicationController;
 import com.simas.base.BaseAct;
 import com.simas.base.PathConfig;
 import com.simas.model.EventDetailBean;
+import com.simas.utils.MyTextUtils;
 import com.simas.utils.ToastUtils;
 
 public class EventDetailAct extends BaseAct implements OnClickListener {
@@ -43,7 +48,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 	private String yiJian = "";
 	private String wfID = "";
 	private String stepID = "";
-	// ¥˝∞ÏÀ˘”√◊÷∂Œ
+
 	private String actionID = "";
 	private String rolecode = LoginActivity.list.get(0).getRole_code();
 	private String gridcode = LoginActivity.list.get(0).getGrid_code();
@@ -65,9 +70,9 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 			if (flag.equals("0")) {
 				tvShengpi.setVisibility(View.GONE);
 			} else if (flag.equals("1")) {
-				tvShengpi.setText(" ≈˙ æ  ");
+				tvShengpi.setText(" ÂÆ°Êâπ  ");
 			} else if (flag.equals("2")) {
-				tvShengpi.setText(" …Û≈˙  ");
+				tvShengpi.setText(" ÊâπÁ§∫  ");
 			}
 		}
 
@@ -85,17 +90,13 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 		}
 
 		String url = "http://" + PathConfig.IP + "/EEventApp.app?Method=ExecuteQuerySeeApp&code=" + code;
-
-		// 1String url = "http://" + PathConfig.IP +
-		// "/EEventApp.app?Method=ExecuteQuerySeeApp&code=" + "00008801";
-
 		StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
 			@Override
 			public void onResponse(String response) {
 				String jsondata = response.toString();
 
 				if (jsondata.equals("")) {
-					ToastUtils.toast(EventDetailAct.this, "√ª”–æﬂÃÂ ˝æ›");
+					ToastUtils.toast(EventDetailAct.this, "Ê≤°ÊúâÊï∞ÊçÆ");
 					finish();
 				} else {
 					data = JSON.parseArray(jsondata, EventDetailBean.class).get(0);
@@ -118,13 +119,6 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 
 		if (!data.getAppeal_img().equals("")) {
 			String imageUrl = "http://" + PathConfig.IP + "/uploads/picture/" + data.getAppeal_img();
-			// String imageUrl =
-			// "http://a.hiphotos.baidu.com/image/pic/item/8cb1cb13495409236d9ba7359258d109b2de498f.jpg";
-			// String imageUrl =
-			// "http://t12.baidu.com/it/u=4095575894,102452705&fm=32&s=A98AA55F526172A6F6A058E50300A060&w=623&h=799&img.JPEG";
-			// String imageUrl =
-			// "http://c.hiphotos.baidu.com/image/pic/item/0823dd54564e9258e306c3e09e82d158ccbf4e89.jpg";
-
 			ImageLoader.getInstance().displayImage(imageUrl, imageview);
 		}
 
@@ -160,7 +154,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 
 		mLoading = (View) this.findViewById(R.id.loading);
 		loading_txt = (TextView) this.findViewById(R.id.loading_txt);
-		loading_txt.setText("’˝‘⁄º”‘ÿ...");
+		loading_txt.setText("Ê≠£Âú®Âä†ËΩΩ...");
 
 	}
 
@@ -175,13 +169,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 
 	protected void initPopupWindow() {
 
-		// ªÒ»°◊‘∂®“Â≤ºæ÷Œƒº˛activity_popupwindow_left.xmlµƒ ”Õº
 		View popupWindow_view = getLayoutInflater().inflate(R.layout.comment_items, null, false);
-
-		// popwindow÷–µƒøÿº˛
-
-		// ¥¥Ω®PopupWindow µ¿˝,200,LayoutParams.MATCH_PARENT∑÷± «øÌ∂»∫Õ∏ﬂ∂»
-		// popupWindow = new PopupWindow(popupWindow_view, 650, 715, true);
 		popupWindow = new PopupWindow(popupWindow_view, 500, 300, true);
 		popupWindow.setWidth(LayoutParams.FILL_PARENT);
 		popupWindow.setHeight(LayoutParams.WRAP_CONTENT);
@@ -205,12 +193,12 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 		});
 
 		if (flag.equals("1")) {
-			bt01.setText("Ã·Ωª");
+			bt01.setText("Êèê‰∫§");
 			bt02.setVisibility(View.GONE);
 			bt01.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					yiJian = etYijian.getText().toString().trim();
+					yiJian = MyTextUtils.getUTFstr(etYijian.getText().toString().trim());
 					String url = "http://" + PathConfig.IP + "/EEventLeaderOpinionApp.app?Method=ExecuteSave&code="
 							+ code + "&leader_opinion=" + yiJian + "&wfID=" + wfID + "&stepID=" + stepID;
 					bt01.setClickable(false);
@@ -230,7 +218,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 			bt01.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					yiJian = etYijian.getText().toString().trim();
+					yiJian = MyTextUtils.getUTFstr(etYijian.getText().toString().trim());
 					String url = "http://" + PathConfig.IP
 							+ "/EEventApp.app?Method=ExecuteSaveApproval&workFlowName=EEvent&wfID=" + wfID
 							+ "&stepID=15&actionID=710&opinion=" + yiJian + "&rolecode=" + rolecode + "&gridcode="
@@ -249,19 +237,21 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 			bt02.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					yiJian = etYijian.getText().toString().trim();
+					yiJian = MyTextUtils.getUTFstr(etYijian.getText().toString().trim());
 					String url = "http://" + PathConfig.IP
 							+ "/EEventApp.app?Method=ExecuteSaveApproval&workFlowName=EEvent&wfID=" + wfID
 							+ "&stepID=15&actionID=720&opinion=" + yiJian + "&rolecode=" + rolecode + "&gridcode="
 							+ gridcode + "&code=" + LoginActivity.list.get(0).getCode();
+					bt01.setClickable(false);
+					if (popupWindow != null && popupWindow.isShowing()) {
+						popupWindow.dismiss();
+						popupWindow = null;
+					}
 					submitData(url.trim());
 				}
 			});
 
 		}
-
-		// …Ë÷√∂Øª≠–ßπ˚
-		//
 
 	}
 
@@ -270,6 +260,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 		String submitUrl = url;
 
 		StringRequest stringRequest = new StringRequest(submitUrl, new Response.Listener<String>() {
+
 			@Override
 			public void onResponse(String response) {
 				String jsondata = response.toString();
@@ -279,7 +270,7 @@ public class EventDetailAct extends BaseAct implements OnClickListener {
 		}, new ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError arg0) {
-				ToastUtils.toast(EventDetailAct.this, "Õ¯¬Á¥ÌŒÛ£¨«Î…‘∫Û÷ÿ ‘£°£° ");
+				ToastUtils.toast(EventDetailAct.this, "ËÆøÈóÆÊúçÂä°Âô®Â§±Ë¥•");
 			}
 
 		});

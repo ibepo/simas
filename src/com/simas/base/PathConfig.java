@@ -1,8 +1,8 @@
 package com.simas.base;
 
 public class PathConfig {
-	// public static final String IP = "192.168.2.77:8601";// ĞËÎ°µçÄÔ
-	// public static final String IP = "60.2.51.154:9111";// Â·±±·şÎñÆ÷
-	public static final String IP = "192.168.2.8:91";// ´Ş½à
+	// public static final String IP = "192.168.2.77:8601";// å¼ å…´ä¼Ÿ
+	 public static final String IP = "60.2.51.154:9111";// è·¯åŒ—
+//	public static final String IP = "192.168.2.8:91";// å´”æ´
 
 }
